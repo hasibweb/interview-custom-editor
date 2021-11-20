@@ -2,11 +2,9 @@ class TextEditor extends HTMLElement {
     constructor() {
         super()
 
-        this.heading = this.getAttribute('title')
-
         this.innerHTML = `
         <div>
-            <h3 class="title">${this.heading}</h3>
+            <h3 class="title">${this.title}</h3>
             <div class="mt-4 mb-2">
                 <button class="btn btn-light edit-btn" data-variant="bold"><i class="fas fa-bold"></i></i></button>
                 <button class="btn btn-light edit-btn" data-variant="italic"><i class="fas fa-italic"></i></i></button>
@@ -21,6 +19,14 @@ class TextEditor extends HTMLElement {
         </div>
         `
     }
+
+    get title() {
+        return this.getAttribute('title')
+    }
+    set title(value) {
+        return this.setAttribute('title', value)
+    }
+
 
     connectedCallback() {
         // Add click event to buttons
@@ -37,7 +43,7 @@ class TextEditor extends HTMLElement {
 
     attributeChangedCallback(title, oldValue, newValue) {
         console.log(`${title}'s value has been changed from ${oldValue} to ${newValue}`)
-        this.heading = newValue
+        // this.title = newValue
     }
 
 }

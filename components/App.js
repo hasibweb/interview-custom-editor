@@ -2,7 +2,7 @@ class App extends HTMLElement {
     constructor() {
         super()
 
-        this.title = 'Custom Text Editor'
+        this.title = 'Custom Editor'
 
         this.innerHTML = `
         <div class="container mt-4">
