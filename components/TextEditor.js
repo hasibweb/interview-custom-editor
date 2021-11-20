@@ -1,41 +1,41 @@
-const template = document.createElement('template')
-template.innerHTML = `    
-    
-    <div>
-        <h3 class="title"></h3>
-        <div>
-            <button class="btn btn-light edit-btn" data-variant="bold">Bold</i></button>
-            <button class="btn btn-light edit-btn" data-variant="italic">Italic</i></button>
-            <button class="btn btn-light edit-btn" data-variant="underline">Underline</button>
-        </div>
-
-        <br>
-
-        <div contenteditable="true" class="editor">
-            There are many variations of passages of Lorem Ipsum available, but the
-            majority have suffered alteration in some form, by injected humour, or
-            randomised words which don't look even slightly believable.
-        </div>
-    </div>
-`
-
 class TextEditor extends HTMLElement {
     constructor() {
         super()
-        this.attachShadow({ mode: 'open' })
-        this.shadowRoot.appendChild(template.content.cloneNode(true))
 
-        // set title
-        this.shadowRoot.querySelector('.title').textContent = this.getAttribute('title')
+        this.innerHTML = `
+        <div>
+            <h3 class="title">${this.getAttribute('title')}</h3>
+            <div class="mt-4 mb-2">
+                <button class="btn btn-light edit-btn" data-variant="bold"><i class="fas fa-bold"></i></i></button>
+                <button class="btn btn-light edit-btn" data-variant="italic"><i class="fas fa-italic"></i></i></button>
+                <button class="btn btn-light edit-btn" data-variant="underline"><i class="fas fa-underline"></i></button>
+            </div>                    
+
+            <div contenteditable="true" class="editor shadow-sm p-3 mb-3">
+                There are many variations of passages of Lorem Ipsum available, but the
+                majority have suffered alteration in some form, by injected humour, or
+                randomised words which don't look even slightly believable.
+            </div>
+        </div>
+        `
 
         // Add click event to buttons
-        this.shadowRoot.querySelectorAll('.edit-btn').forEach(btn => {
+        document.querySelectorAll('.edit-btn').forEach(btn => {
             btn.addEventListener('click', e => {
                 document.execCommand(e.target.dataset.variant)
             })
         })
 
     }
+
+    static get observedAttributes() {
+        return ['title',]
+    }
+
+    attributeChangedCallback(title, oldValue, newValue) {
+        console.log(`${title}'s value has been changed from ${oldValue} to ${newValue}`)
+    }
+
 }
 
 window.customElements.define('text-editor', TextEditor)

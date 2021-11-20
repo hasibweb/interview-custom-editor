@@ -16,11 +16,20 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container mt-4">
 
         <text-editor title="Custom Text Editor">
         </text-editor>
+
+        <button class="btn btn-primary">Change Title</button>
     </div>
+
+
+    <script>
+        document.querySelector('.btn-primary').addEventListener('click', e => {
+            document.querySelector('.title').textContent = 'Title Changed'
+        })
+    </script>
 </body>
 
 </html>
