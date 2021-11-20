@@ -8,7 +8,7 @@ class App extends HTMLElement {
         <div class="container mt-4">
             <text-editor title="${this.title}"></text-editor>
 
-            <button class="btn btn-info">Change Title</button>
+            <button class="btn btn-info mt-3">Change Title</button>
         </div>
         `
     }
