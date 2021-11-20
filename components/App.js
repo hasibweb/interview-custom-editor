@@ -15,7 +15,8 @@ class App extends HTMLElement {
 
     connectedCallback() {
         document.querySelector('.btn-info').addEventListener('click', e => {
-            this.title = 'Title Changed'
+            // this.title = 'Title Changed'
+            document.querySelector('text-editor').setAttribute('title', 'Title Changed')
         })
     }
 }
