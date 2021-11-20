@@ -1,6 +1,6 @@
 const template = document.createElement('template')
 template.innerHTML = `    
-
+    
     <div>
         <h3 class="title"></h3>
         <div>
@@ -30,13 +30,10 @@ class TextEditor extends HTMLElement {
 
         // Add click event to buttons
         this.shadowRoot.querySelectorAll('.edit-btn').forEach(btn => {
-            btn.addEventListener('click', handleBtnClick)
+            btn.addEventListener('click', e => {
+                document.execCommand(e.target.dataset.variant)
+            })
         })
-
-        // Handle Button Click
-        function handleBtnClick(e) {
-            document.execCommand(e.target.dataset.variant)
-        }
 
     }
 }
