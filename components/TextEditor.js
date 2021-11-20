@@ -36,7 +36,7 @@ class TextEditor extends HTMLElement {
     }
 
     attributeChangedCallback(title, oldValue, newValue) {
-        console.log(`${title}'s value has been changed from ${oldValue} to ${newValue}`)
+        document.querySelector('.title').textContent = newValue
     }
 
 }
