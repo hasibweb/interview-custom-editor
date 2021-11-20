@@ -6,9 +6,9 @@ class TextEditor extends HTMLElement {
         <div>
             <h3 class="title">${this.title}</h3>
             <div class="mt-4 mb-2">
-                <button class="btn btn-light edit-btn" data-variant="bold"><i class="fas fa-bold"></i></i></button>
-                <button class="btn btn-light edit-btn" data-variant="italic"><i class="fas fa-italic"></i></i></button>
-                <button class="btn btn-light edit-btn" data-variant="underline"><i class="fas fa-underline"></i></button>
+                <button class="btn btn-light edit-btn" data-variant="bold">Bold</button>
+                <button class="btn btn-light edit-btn" data-variant="italic">Italic</button>
+                <button class="btn btn-light edit-btn" data-variant="underline">Underline</button>
             </div>                    
 
             <div contenteditable="true" class="editor shadow-sm p-3 mb-3">
@@ -44,7 +44,7 @@ class TextEditor extends HTMLElement {
 
     attributeChangedCallback(title, oldValue, newValue) {
         console.log(`${title}'s value has been changed from ${oldValue} to ${newValue}`)
-        // this.title = newValue
+
     }
 
 }
